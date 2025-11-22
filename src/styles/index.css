@@ -1,0 +1,141 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* カスタムスタイル */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
+    color: #f7f7f7;
+}
+.game-container { max-width: 96rem; min-height: 100vh; }
+.card-button {
+    transition: all 0.15s;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    border: 2px solid transparent;
+}
+.card-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+.header-title {
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+/* プレイヤーごとのテーマカラー */
+.text-casino-green { color: #00cc00; }
+.text-casino-red { color: #ff0000; }
+.bg-casino-green { background-color: #008000; }
+.bg-casino-red { background-color: #cc0000; }
+.border-you-fixed { border-color: #008000; }
+.border-cpu-fixed { border-color: #cc0000; }
+
+/* フォントサイズ階層の定義 */
+.text-large {
+    font-size: clamp(2rem, 6vw + 0.5rem, 3.5rem); /* 大: メインタイトル */
+}
+.text-medium {
+    font-size: clamp(1.4rem, 4.5vw + 0.2rem, 2.2rem); /* 中: フェイズタイトル、プレイヤー名、ライフ、ボタン、メインメッセージ */
+}
+.text-small {
+    font-size: clamp(0.8rem, 2.5vw + 0.05rem, 0.95rem); /* 小: 説明文、ログ内容、補助情報、ブラフステータスボックス */
+}
+/* 絵文字専用の大きなフォントサイズ */
+.text-emoji-display {
+    font-size: clamp(2.5rem, 8vw + 0.5rem, 4rem);
+}
+
+/* ブラフ宣言ボックスのスタイル */
+.bluff-status-box {
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    min-width: 0;
+    flex-shrink: 0;
+}
+.self-declared { border-left: 5px solid #008000; }
+.opponent-declared { border-left: 5px solid #cc0000; }
+
+/* ブラフ宣言時の手札表示 */
+.bluff-hand-emojis {
+    white-space: nowrap; /* 折り返しを禁止 */
+    overflow: hidden; /* オーバーフローを非表示 */
+    text-overflow: clip; /* テキストオーバーフローをクリップ */
+    display: flex; /* Flexboxで絵文字を並べる */
+    justify-content: center; /* 中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    gap: 4px; /* 絵文字間のギャップ */
+    font-weight: extrabold; /* font-extrabold を維持 */
+    color: #00cc00; /* text-casino-green を維持 */
+}
+
+
+/* カード選択ボタンのサイズ調整 */
+.card-grid {
+    display: flex; /* Flexboxに変更 */
+    flex-wrap: nowrap; /* 折り返しを禁止し、常に横一列に */
+    gap: 4px; /* ギャップをさらに小さくする */
+    justify-content: center; /* アイテムを中央に配置 */
+    padding: 0; /* 不要なパディングを削除 */
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+.card-item-button {
+    flex-grow: 1; /* アイテムが利用可能なスペースを埋めるように成長 */
+    flex-shrink: 1; /* 必要に応じて縮小 */
+    flex-basis: 60px; /* 最小ベース幅を設定 */
+    max-width: 100px; /* カードの最大幅を設定 */
+    height: 60px; /* カードの固定高さを設定 */
+    padding: 0; /* パディングを最小化 */
+    display: flex; /* ボタン内部のコンテンツを中央揃えにするため */
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    line-height: 1; /* 行の高さを調整して中央揃えを改善 */
+}
+
+/* 結果表示UIのスタイル */
+.result-box {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+.player-status-box {
+    background-color: #1a1a1a;
+    border: 2px solid #333333;
+}
+
+/* ライフハートの色 */
+.life-display {
+    line-height: 1;
+}
+.life-hearts { color: #ff0000; }
+
+/* 結果強調スタイル */
+.result-header-win { color: #00ff00; }
+.result-header-lose { color: #ff3333; }
+.result-text-win { color: #00ff00; font-weight: bold; }
+.result-text-lose { color: #ff3333; font-weight: bold; }
+.result-header-draw { color: #ffffff; font-weight: bold; } /* あいこ時のスタイルを追加 */
+
+/* ======== ローディング画面用スタイル ======== */
+.spinner {
+    width: 50px; height: 50px;
+    border: 5px solid rgba(255, 0, 0, 0.3);
+    border-top-color: #ff0000;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+.spinner-small {
+    width: 20px; height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

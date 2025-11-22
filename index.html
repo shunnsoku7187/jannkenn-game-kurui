@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票ジャンケン狂</title>
+    <!-- Tailwind CSS (CDNのまま維持) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- カスタムスタイルをインポートするように変更 (実際にはindex.tsxからインポートされる) -->
+    <link rel="stylesheet" href="./src/styles/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+</head>
+<body class="p-4">
+    <div id="app">
+        <!-- Reactアプリがここにマウントされます -->
+    </div>
+    <script type="module" src="./index.tsx"></script>
+</body>
+</html>
